@@ -1,0 +1,16 @@
+{{>header}}
+<h1>Lista de Registros</h1>
+<table>
+    <tr>
+        <th>Id</th>
+    </tr>
+    {{#registros}}
+    <tr>
+        <td><a href="/web/registros/{{id}}">{{id}}</a></td>
+        <td>{{id_tarjeta}}</td>
+        <td>{{fecha_hora}}</td>
+        <td>{{descripcion}}</td>
+    </tr>
+    {{/registros}}
+</table>
+{{>footer}}
