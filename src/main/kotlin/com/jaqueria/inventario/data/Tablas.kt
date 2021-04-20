@@ -23,6 +23,7 @@ class Tablas {
         }
     }
 
+    //Registros
     @Entity
     @Table(name = "registros")
     class Registros {
