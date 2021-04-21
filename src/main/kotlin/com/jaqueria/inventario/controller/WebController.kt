@@ -1,7 +1,7 @@
 package com.jaqueria.inventario.controller
 
-import com.jaqueria.inventario.service.DispositivosRepository
-import com.jaqueria.inventario.service.RegistrosRepository
+import com.jaqueria.inventario.data.DispositivosRepository
+import com.jaqueria.inventario.data.RegistrosRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Controller
