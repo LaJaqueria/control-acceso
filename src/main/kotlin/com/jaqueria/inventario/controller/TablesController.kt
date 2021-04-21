@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*
 @RestController
 class TablasController(
     private val dispositivosRepository: DispositivosRepository,
-    val registrosRepository: RegistrosRepository
+    private val registrosRepository: RegistrosRepository
 ) {
     @GetMapping("/dispositivos")
     fun listDispositivos(@RequestParam type: String?): List<Tablas.Dispositivos> {
