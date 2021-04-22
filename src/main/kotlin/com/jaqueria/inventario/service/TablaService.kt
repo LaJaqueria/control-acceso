@@ -8,4 +8,8 @@ class TablaService(private val dispositivosRepository: DispositivosRepository, p
     public fun getDevices(id: Int):Tablas.Dispositivos{
         return dispositivosRepository.findById(id).get()
     }
+
+    public fun getAllDevices():List<Tablas.Dispositivos>{
+        return dispositivosRepository.findAll()
+    }
 }
