@@ -7,6 +7,7 @@ class Tablas {
     @Table(name = "dispositivos")
          class Dispositivos(
              @Id
+             @GeneratedValue
              var id: Int = 0,
              @Column(unique = true)
              var num_serie: Int = 0,
@@ -21,6 +22,7 @@ class Tablas {
          @Table(name = "registros")
          class Registros (
              @Id
+             @GeneratedValue
              var id: Int = 0,
              @JoinColumn(name = "id")
              var id_tarjeta: Tablas.Dispositivos,
