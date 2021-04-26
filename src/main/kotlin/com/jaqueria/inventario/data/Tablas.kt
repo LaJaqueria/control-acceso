@@ -8,10 +8,12 @@ class Tablas {
          class Dispositivos(
              @Id
              var id: Int = 0,
+             //clave única
              @Column(unique = true)
              var num_serie: Int = 0,
              var uid_socio: Int = 0,
              var activo: Boolean = false,
+             //lista mutable
              @OneToMany
              var registros: MutableList<Registros> = ArrayList()
             )
@@ -22,10 +24,10 @@ class Tablas {
          class Registros (
              @Id
              var id: Int = 0,
+             //clave foránea
              @JoinColumn(name = "id")
              var id_tarjeta: Tablas.Dispositivos,
              var fecha_hora: String = "",
              var descripcion: String = ""
             )
-
 }
