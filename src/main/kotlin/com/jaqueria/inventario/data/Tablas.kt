@@ -7,6 +7,7 @@ class Tablas {
     @Table(name = "dispositivos")
          class Dispositivos(
              @Id
+             @GeneratedValue
              var id: Int = 0,
              //clave única
              @Column(unique = true)
@@ -23,6 +24,7 @@ class Tablas {
          @Table(name = "registros")
          class Registros (
              @Id
+             @GeneratedValue
              var id: Int = 0,
              //clave foránea
              @JoinColumn(name = "id")
