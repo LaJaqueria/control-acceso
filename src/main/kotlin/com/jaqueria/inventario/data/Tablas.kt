@@ -11,7 +11,7 @@ class Tablas {
              var id: Int = 0,
              @Column(unique = true)
              var num_serie: Int = 0,
-             var uid_socio: Int = 0,
+             var uid_socio: String = "",
              var activo: Boolean = false,
              @OneToMany
              var registros: MutableList<Registros> = ArrayList()
