@@ -5,9 +5,6 @@ import com.jaqueria.inventario.data.Tablas.*
 
 interface DispositivosRepository : JpaRepository<Dispositivos, Int> {
 
-    fun listDispositivos():List<Dispositivos>
-    fun loadDispositivos(id:Int):Dispositivos
-    fun saveDispositivos(dispositivos: Dispositivos):Dispositivos
-    fun removeDispositivos(id: Int)
+    fun findAllByNumSerie(numserie:String): MutableList<Dispositivos>
 
 }

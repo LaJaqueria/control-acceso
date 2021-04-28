@@ -10,9 +10,10 @@ class Tablas {
              @GeneratedValue
              var id: Int = 0,
              //clave única
-             @Column(unique = true)
-             var num_serie: Int = 0,
-             var uid_socio: String = "",
+             @Column(name="num_serie",unique = true)
+             var numSerie: Int = 0,
+             @Column(name="uid_socio")
+             var uidSocio: String = "",
              var activo: Boolean = false,
              //lista mutable
              @OneToMany
@@ -27,8 +28,9 @@ class Tablas {
              @GeneratedValue
              var id: Int = 0,
              //clave foránea
-             @JoinColumn(name = "id")
-             var id_tarjeta: Tablas.Dispositivos,
+             @ManyToOne(fetch = FetchType.LAZY)
+             @JoinColumn(name = "id_tarjeta")
+             var id_tarjeta: Dispositivos,
              var fecha_hora: String = "",
              var descripcion: String = ""
             )
