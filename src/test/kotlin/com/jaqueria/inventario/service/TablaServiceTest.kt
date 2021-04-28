@@ -36,7 +36,7 @@ class TablaServiceTest(){
     fun whengetAllDispositivos_thenok(){
         val disp1=Tablas.Dispositivos(1,111,"111",true);
         `when`(dispositivosRepository.findAll()).thenReturn(listOf(disp1))
-        val result = tablaservice.getAllDevices()
+        val result = tablaservice.getAllDevicesDispositivos()
         Assertions.assertNotNull(result)
         Assertions.assertEquals(1, result.size)
         Assertions.assertEquals(1, result[0].id)
