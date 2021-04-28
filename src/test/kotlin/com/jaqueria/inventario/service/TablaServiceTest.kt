@@ -3,43 +3,56 @@ package com.jaqueria.inventario.service
 import com.jaqueria.inventario.data.DispositivosRepository
 import com.jaqueria.inventario.data.RegistrosRepository
 import com.jaqueria.inventario.data.Tablas
+import io.mockk.MockKAnnotations
+import io.mockk.every
+import io.mockk.impl.annotations.MockK
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.mockito.Mockito.`when`
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.context.SpringBootTest
 
-import org.springframework.boot.test.mock.mockito.MockBean
-
-
-@SpringBootTest
+//Test Unitario sobre Tabla Service Test
 class TablaServiceTest(){
 
-    @MockBean
+    //PRopiedades Mockeadas: cada una usa un Mock. Son las propiedades que estan dentro de la clase
+    @MockK
     lateinit var  dispositivosRepository: DispositivosRepository;
 
-    @MockBean
+    //Otra propiedad mockeada.
+    @MockK
     lateinit var registrosRepository: RegistrosRepository;
 
 
-    @Autowired
-    lateinit var tablaservice:TablaService
+
+    //Objeto de la clase a probar
+    var tablaservice:TablaService?=null
 
 
+    //Inicializacion de los tests
     @BeforeEach
     fun init(){
+        //Inicializacion de las variables mock
+        MockKAnnotations.init(this,relaxUnitFun = true)
+        //Variables necesarias para mockear (se genera un dispositivo)
+        val disp1=Tablas.Dispositivos(1,111,"111",true);
+        //Definir la llamada a mockear. Cada vez que se llame a dispositivosRepository.findAll() se devolverá lo mismo.
+
+        every { dispositivosRepository.findAll() } returns listOf(disp1)
+        //Inicializacion de la clase para probar
         tablaservice= TablaService(dispositivosRepository,registrosRepository)
     }
 
+    //Test Unitario
     @Test
     fun whengetAllDispositivos_thenok(){
-        val disp1=Tablas.Dispositivos(1,111,"111",true);
-        `when`(dispositivosRepository.findAll()).thenReturn(listOf(disp1))
-        val result = tablaservice.getAllDevicesDispositivos()
+
+        //Se prueba la llamada al metodo
+        val result = tablaservice?.getAllDevicesDispositivos()
+        //COmprobaciones. Se comprueba que no es null el resultado
         Assertions.assertNotNull(result)
-        Assertions.assertEquals(1, result.size)
-        Assertions.assertEquals(1, result[0].id)
+        //COmprobamos el tamaño de la lista
+        Assertions.assertEquals(1, result?.size)
+        //Se comprueba que la lista no es nula y que el objeto obtenido tampoco lo es y se comprueba que su id es 1.
+        result?.get(0)?.let { Assertions.assertEquals(1, it.id) }
     }
 
 
