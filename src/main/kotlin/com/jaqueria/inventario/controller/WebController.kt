@@ -12,7 +12,13 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.server.ResponseStatusException
 
-//controlador web que busca una vista
+/**
+ * Web controller
+ *
+ * @property dispositivosRepository
+ * @property registrosRepository
+ * @constructor Create empty Web controller
+ *///controlador web que busca una vista
 @Controller
 @RequestMapping("/web")
 class WebController(
@@ -20,7 +26,12 @@ class WebController(
     private val registrosRepository: RegistrosRepository
 ) {
 
-    //pasa toda la información para visualizar devolviendo el nombre de la vista
+    /**
+     * Listar dispositivos
+     *
+     * @param model
+     * @return
+     *///pasa toda la información para visualizar devolviendo el nombre de la vista
     @GetMapping("/dispositivos")
     fun listarDispositivos(model: Model): String {
         model["title"] = "dispositivos";
@@ -28,6 +39,13 @@ class WebController(
         return "dispositivoslista"
     }
 
+    /**
+     * Detalle dispositivos
+     *
+     * @param id
+     * @param model
+     * @return
+     */
     @GetMapping("/dispositivos/{id}")
     fun detalleDispositivos(@PathVariable id: Int, model: Model): String {
         model["title"] = "Detalle Tabla Dispositivos";
@@ -38,13 +56,26 @@ class WebController(
         return "dispositivos"
     }
 
-    //pasa toda la información para visualizar devolviendo el nombre de la vista
+    /**
+     * Listar registros
+     *
+     * @param model
+     * @return
+     *///pasa toda la información para visualizar devolviendo el nombre de la vista
     @GetMapping("/registros")
     fun listarRegistros(model: Model): String {
         model["title"] = "registros";
         model["registros"] = registrosRepository.findAll();
         return "registroslista"
     }
+
+    /**
+     * Detalle registros
+     *
+     * @param id
+     * @param model
+     * @return
+     */
     @GetMapping("/registros/{id}")
     fun detalleRegistros(@PathVariable id: Int, model: Model): String {
         model["title"] = "Detalle Tabla Dispositivos";

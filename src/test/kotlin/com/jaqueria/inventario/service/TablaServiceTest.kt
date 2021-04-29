@@ -10,7 +10,11 @@ import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
-//Test Unitario sobre Tabla Service Test
+/**
+ * Tabla service test
+ *
+ * @constructor Create empty Tabla service test
+ *///Test Unitario sobre Tabla Service Test
 class TablaServiceTest(){
 
     //PRopiedades Mockeadas: cada una usa un Mock. Son las propiedades que estan dentro de la clase
@@ -27,7 +31,10 @@ class TablaServiceTest(){
     var tablaservice:TablaService?=null
 
 
-    //Inicializacion de los tests
+    /**
+     * Init
+     *
+     *///Inicializacion de los tests
     @BeforeEach
     fun init(){
         //Inicializacion de las variables mock
@@ -41,7 +48,10 @@ class TablaServiceTest(){
         tablaservice= TablaService(dispositivosRepository,registrosRepository)
     }
 
-    //Test Unitario
+    /**
+     * Whenget all dispositivos_thenok
+     *
+     *///Test Unitario
     @Test
     fun whengetAllDispositivos_thenok(){
 

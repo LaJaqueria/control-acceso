@@ -1,3 +1,10 @@
 package com.jaqueria.inventario.exception
 
-class TablesException(message:String?):Exception(message)
+/**
+ * Tables exception
+ *
+ * @constructor
+ *
+ * @param message
+ */
+class TablesException(message: String?) : Exception(message)
