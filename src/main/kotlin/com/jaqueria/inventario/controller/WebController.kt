@@ -13,12 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.server.ResponseStatusException
 
 /**
- * Web controller
+ * Web controller llama a Repositorios para obtener los registros y dispositivos
  *
- * @property dispositivosRepository
- * @property registrosRepository
+ * @property dispositivosRepository donde buscar dispositivos
+ * @property registrosRepository donde buscar registros
  * @constructor Create empty Web controller
- *///controlador web que busca una vista
+ * controlador web que busca una vista
+ */
 @Controller
 @RequestMapping("/web")
 class WebController(

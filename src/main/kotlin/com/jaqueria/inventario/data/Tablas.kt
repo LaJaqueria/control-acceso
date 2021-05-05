@@ -3,7 +3,7 @@ package com.jaqueria.inventario.data
 import javax.persistence.*
 
 /**
- * Tablas
+ * Tablas clase con los campos de Dispositivos
  *
  * @constructor Create empty Tablas
  */
@@ -11,11 +11,11 @@ class Tablas {
     /**
      * Dispositivos
      *
-     * @property id
-     * @property numSerie
-     * @property uidSocio
-     * @property activo
-     * @property registros
+     * @property id del dispositivo
+     * @property numSerie del dispositivo Rfid
+     * @property uidSocio vinculado al dispositivo
+     * @property activo true si está al día, false si no está al día
+     * @property registros conecta on registros
      * @constructor Create empty Dispositivos
      *///Dispositivos
     @Entity
@@ -26,7 +26,7 @@ class Tablas {
         var id: Int = 0,
         //clave única
         @Column(name = "num_serie", unique = true)
-        var numSerie: Int = 0,
+        var numSerie: String = "",
         @Column(name = "uid_socio")
         var uidSocio: String = "",
         var activo: Boolean = false,

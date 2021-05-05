@@ -1,8 +1,6 @@
 package com.jaqueria.inventario.service
 
-import com.jaqueria.inventario.data.DispositivosRepository
-import com.jaqueria.inventario.data.RegistrosRepository
-import com.jaqueria.inventario.data.Tablas
+import com.jaqueria.inventario.data.*
 import org.springframework.stereotype.Service
 
 /**
@@ -24,16 +22,17 @@ class TablaService(
      *//*public fun getDevices(id: Int):Tablas.Dispositivos{
         return dispositivosRepository.findById(id).get()
     }*/
-    public fun getAllDevicesDispositivos(): List<Tablas.Dispositivos> {
-        return dispositivosRepository.findAll()
+    public fun getAllDevicesDispositivos(numSerie: String): DispositivosDto {
+        var dispositivos = dispositivosRepository.findAllByNumSerie(numSerie)
+        var dispositivoDto = DispositivosDto()
+        dispositivoDto.id = dispositivos[0].id
+        dispositivoDto.numSerie = dispositivos[0].numSerie
+        dispositivoDto.activo = dispositivos[0].activo
+        dispositivoDto.uidSocio = dispositivos[0].uidSocio
+
+        return dispositivoDto
+
     }
 
-    /**
-     * Get
-     *
-     * @return
-     */
-    public fun get(): List<Tablas.Registros> {
-        return registrosRepository.findAll()
-    }
+
 }

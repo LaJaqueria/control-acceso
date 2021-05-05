@@ -40,10 +40,10 @@ class TablaServiceTest(){
         //Inicializacion de las variables mock
         MockKAnnotations.init(this,relaxUnitFun = true)
         //Variables necesarias para mockear (se genera un dispositivo)
-        val disp1=Tablas.Dispositivos(1,111,"111",true);
+        val disp1=Tablas.Dispositivos(1,"111","111",true);
         //Definir la llamada a mockear. Cada vez que se llame a dispositivosRepository.findAll() se devolverá lo mismo.
 
-        every { dispositivosRepository.findAll() } returns listOf(disp1)
+        every { dispositivosRepository.findAllByNumSerie("1234") } returns listOf(disp1)
         //Inicializacion de la clase para probar
         tablaservice= TablaService(dispositivosRepository,registrosRepository)
     }
@@ -56,14 +56,9 @@ class TablaServiceTest(){
     fun whengetAllDispositivos_thenok(){
 
         //Se prueba la llamada al metodo
-        val result = tablaservice?.getAllDevicesDispositivos()
+        val result = tablaservice?.getAllDevicesDispositivos(numSerie = "1234")
         //COmprobaciones. Se comprueba que no es null el resultado
         Assertions.assertNotNull(result)
-        //COmprobamos el tamaño de la lista
-        Assertions.assertEquals(1, result?.size)
-        //Se comprueba que la lista no es nula y que el objeto obtenido tampoco lo es y se comprueba que su id es 1.
-        result?.get(0)?.let { Assertions.assertEquals(1, it.id) }
+        Assertions.assertEquals(1, result?.id)
     }
-
-
 }

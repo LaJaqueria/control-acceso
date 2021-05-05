@@ -4,9 +4,9 @@ import org.springframework.data.jpa.repository.JpaRepository
 import com.jaqueria.inventario.data.Tablas.*
 
 /**
- * Dispositivos repository
+ * Dispositivos repository repositorio de dispositivos
  *
- * @constructor Create empty Dispositivos repository
+ * @constructor Create empty Dispositivos repository constructor vacío
  */
 interface DispositivosRepository : JpaRepository<Dispositivos, Int> {
 
@@ -16,6 +16,6 @@ interface DispositivosRepository : JpaRepository<Dispositivos, Int> {
      * @param numserie
      * @return
      */
-    fun findAllByNumSerie(numserie: String): MutableList<Dispositivos>
+    fun findAllByNumSerie(numserie: String): List<Dispositivos>
 
 }
