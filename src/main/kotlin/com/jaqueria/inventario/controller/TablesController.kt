@@ -7,8 +7,10 @@ import com.jaqueria.inventario.data.Tablas
 import com.jaqueria.inventario.data.Tablas.*
 import com.jaqueria.inventario.exception.TablesException
 import com.jaqueria.inventario.service.TablaService
+import org.springframework.ldap.core.AttributesMapper
 import org.springframework.web.bind.annotation.*
 import java.util.*
+import javax.naming.directory.Attributes
 import kotlin.jvm.Throws
 
 
@@ -78,6 +80,15 @@ class TablasController(
         }
     }
 
+//    fun search(username: String): List<String?>? {
+//        return ldapSearch
+//            .search(
+//                "ou=users",
+//                "cn=$username",
+//                AttributesMapper { attrs: Attributes ->
+//                    attrs["cn"].get() as String
+//                } as AttributesMapper<String?>)
+//    }
 
     /*
      * LoadElemento lo uso para prueba
