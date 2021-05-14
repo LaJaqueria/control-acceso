@@ -9,7 +9,9 @@ import io.mockk.impl.annotations.MockK
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.ui.Model
+import java.util.*
 
 /**
  * Web controller test
@@ -25,7 +27,7 @@ class WebControllerTest {
     private lateinit var registrosRepository: RegistrosRepository
 
     @MockK
-    private lateinit var model: Model
+    lateinit var model: Model
 
     var webController: WebController? = null
 
@@ -40,9 +42,12 @@ class WebControllerTest {
         MockKAnnotations.init(this, relaxUnitFun = true)
         //Variables necesarias para mockear (se genera un dispositivo)
         val disp1 = Tablas.Dispositivos(1, "111", "111", true);
+        var reg1 = Tablas.Registros(1,disp1,"1111","1111")
         //Definir la llamada a mockear. Cada vez que se llame a dispositivosRepository.findAll() se devolverá lo mismo.
 
-        every { dispositivosRepository.findAll() } returns listOf(disp1)
+        every { dispositivosRepository.findByIdOrNull(any()) } returns disp1
+        every { model.addAttribute(any(),any()) } returns model
+        every { registrosRepository.findById(any()) }returns Optional.of(reg1)
         //Inicializacion de la clase para probar
         webController = WebController(dispositivosRepository, registrosRepository)
     }
@@ -86,7 +91,7 @@ class WebControllerTest {
     fun detalleRegistros() {
         val result = webController?.detalleRegistros(1, model)
         Assertions.assertNotNull(result)
-        Assertions.assertEquals("dispositivos", result)
+        Assertions.assertEquals("registros", result)
     }
 
 }
