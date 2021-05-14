@@ -4,8 +4,6 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.ldap.core.AttributesMapper
 import org.springframework.ldap.core.LdapTemplate
 import org.springframework.ldap.core.support.LdapContextSource
-import org.springframework.ldap.query.LdapQuery
-import org.springframework.ldap.query.LdapQueryBuilder
 import org.springframework.stereotype.Component
 import javax.annotation.PostConstruct
 import javax.naming.directory.Attributes
@@ -117,4 +115,3 @@ class LdapClient {
 
 
 
-    }

@@ -27,18 +27,18 @@ class WebController(
     private val registrosRepository: RegistrosRepository
 ) {
 
-    /**
+    /*
      * Listar dispositivos
      *
      * @param model
      * @return
      *///pasa toda la información para visualizar devolviendo el nombre de la vista
-    @GetMapping("/dispositivos")
-    fun listarDispositivos(model: Model): String {
-        model["title"] = "dispositivos";
-        model["dispositivos"] = dispositivosRepository.findAll();
-        return "dispositivoslista"
-    }
+//    @GetMapping("/dispositivos")
+//    fun listarDispositivos(model: Model): String {
+//        model["title"] = "dispositivos";
+//        model["dispositivos"] = dispositivosRepository.findAll();
+//        return "dispositivoslista"
+//    }
 
     /**
      * Detalle dispositivos
@@ -57,18 +57,18 @@ class WebController(
         return "dispositivos"
     }
 
-    /**
+    /*
      * Listar registros
      *
      * @param model
      * @return
      *///pasa toda la información para visualizar devolviendo el nombre de la vista
-    @GetMapping("/registros")
-    fun listarRegistros(model: Model): String {
-        model["title"] = "registros";
-        model["registros"] = registrosRepository.findAll();
-        return "registroslista"
-    }
+//    @GetMapping("/registros")
+//    fun listarRegistros(model: Model): String {
+//        model["title"] = "registros";
+//        model["registros"] = registrosRepository.findAll();
+//        return "registroslista"
+//    }
 
     /**
      * Detalle registros
