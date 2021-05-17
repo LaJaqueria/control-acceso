@@ -1,17 +1,11 @@
 package com.jaqueria.inventario.controller
 
 import com.jaqueria.inventario.data.DispositivosDto
-import com.jaqueria.inventario.data.DispositivosRepository
-import com.jaqueria.inventario.data.RegistrosRepository
-import com.jaqueria.inventario.data.Tablas
-import com.jaqueria.inventario.data.Tablas.*
 import com.jaqueria.inventario.exception.TablesException
 import com.jaqueria.inventario.service.TablaService
-import org.springframework.ldap.core.AttributesMapper
-import org.springframework.web.bind.annotation.*
-import java.util.*
-import javax.naming.directory.Attributes
-import kotlin.jvm.Throws
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.bind.annotation.RestController
 
 
 /**
