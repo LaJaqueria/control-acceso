@@ -53,8 +53,8 @@ class Tablas {
         //clave foránea
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "id_tarjeta")
-        var id_tarjeta: Dispositivos,
-        var fecha_hora: String = "",
+        var idTarjeta: Dispositivos,
+        var fechaHora: String = "",
         var descripcion: String = ""
     )
 }

@@ -1,9 +1,9 @@
 package com.jaqueria.inventario.service
 
-import com.jaqueria.inventario.data.*
-import org.springframework.ldap.core.AttributesMapper
+import com.jaqueria.inventario.data.DispositivosDto
+import com.jaqueria.inventario.data.DispositivosRepository
+import com.jaqueria.inventario.data.RegistrosRepository
 import org.springframework.stereotype.Service
-import javax.naming.directory.Attributes
 
 
 /**
@@ -22,8 +22,6 @@ class TablaService(
      * Get all devices dispositivos
      *
      * @return
-     *//*public fun getDevices(id: Int):Tablas.Dispositivos{
-        return dispositivosRepository.findById(id).get()
     }*/
     public fun getAllDevicesDispositivos(numSerie: String): DispositivosDto {
         var dispositivos = dispositivosRepository.findAllByNumSerie(numSerie)
@@ -36,8 +34,6 @@ class TablaService(
         return dispositivoDto
 
     }
-
-
 
 
 }
