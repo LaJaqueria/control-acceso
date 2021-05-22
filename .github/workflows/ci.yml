@@ -32,7 +32,7 @@ jobs:
       - name: Test With Maven
         run: mvn --batch-mode --update-snapshots install
       - name: Sonar
-        run: mvn sonar:sonar -Dsonar.projectKey=LaJaqueria_control-acceso -Dsonar.organization=lajaqueria -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
+        run: mvn sonar:sonar -Dsonar.projectName=control-acceso -Dsonar.projectKey=LaJaqueria_control-acceso -Dsonar.organization=lajaqueria -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
         env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
