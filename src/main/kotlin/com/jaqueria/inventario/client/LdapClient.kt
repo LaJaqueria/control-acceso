@@ -28,7 +28,7 @@ class LdapClient {
     /**
      * Ldap Base DN
      */
-    @Value("\${ ldap.base.dn}")
+    @Value("\${ldap.base.dn}")
     private lateinit var base: String
 
     /**
