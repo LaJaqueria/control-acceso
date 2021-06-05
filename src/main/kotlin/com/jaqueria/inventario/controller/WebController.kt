@@ -27,18 +27,6 @@ class WebController(
     private val registrosRepository: RegistrosRepository
 ) {
 
-    /*
-     * Listar dispositivos
-     *
-     * @param model
-     * @return
-     *///pasa toda la información para visualizar devolviendo el nombre de la vista
-//    @GetMapping("/dispositivos")
-//    fun listarDispositivos(model: Model): String {
-//        model["title"] = "dispositivos";
-//        model["dispositivos"] = dispositivosRepository.findAll();
-//        return "dispositivoslista"
-//    }
 
     /**
      * Detalle dispositivos
@@ -48,41 +36,13 @@ class WebController(
      * @return
      */
     @GetMapping("/dispositivos/{id}")
-    fun detalleDispositivos(@PathVariable id: Int, model: Model): String {
-        model["title"] = "Detalle Tabla Dispositivos";
+    fun detalleDispositivo(@PathVariable id: Int, model: Model): String {
+        model["title"] = "Detalle Dispositivos";
         val dispositivos =
             dispositivosRepository.findByIdOrNull(id) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND)
         model["dispositivos"] = dispositivos
         // model["ataques"] = tables.attacks
-        return "dispositivos"
+        return "dispositivo"
     }
 
-    /*
-     * Listar registros
-     *
-     * @param model
-     * @return
-     *///pasa toda la información para visualizar devolviendo el nombre de la vista
-//    @GetMapping("/registros")
-//    fun listarRegistros(model: Model): String {
-//        model["title"] = "registros";
-//        model["registros"] = registrosRepository.findAll();
-//        return "registroslista"
-//    }
-
-    /**
-     * Detalle registros
-     *
-     * @param id
-     * @param model
-     * @return
-     */
-    @GetMapping("/registros/{id}")
-    fun detalleRegistros(@PathVariable id: Int, model: Model): String {
-        model["title"] = "Detalle Tabla Dispositivos";
-        val registros = registrosRepository.findByIdOrNull(id) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND)
-        model["registros"] = registros
-        // model["ataques"] = tables.attacks
-        return "registros"
-    }
 }
